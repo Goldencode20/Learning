@@ -5,7 +5,7 @@ import time
 # I thought of the infinite monkey theorem and I wanted to see how long 
 # it would take to write to be or not to be in as simple terms as possible 
 # and I gave it two diffrent ways to write it with a word at a time not in 
-# order and then the whole string.
+# order and then the whole string. I do want to come back to this one day and improve its speed/run multiple instances at one/test a whole book
 
 compareString = "to be or not to be"
 chars = string.ascii_lowercase + ' ' 
