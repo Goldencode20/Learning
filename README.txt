@@ -3,6 +3,7 @@ Projects I want to do
     Health Tracker using samsung health (if possible)
     To do app to track what I have
     Discord bot?
+    Blockchain for a game 
     
 Completed Projects
     infinite monkey theorem (python)
