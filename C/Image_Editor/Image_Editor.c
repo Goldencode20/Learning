@@ -25,7 +25,6 @@ int* importColors() {
     char *r, *c; 
     int row, col;
     fgets(line, 1000, file); 
-    printf("%s", line);
     r = strtok(line, " ");
     c = strtok(NULL, " ");
     row = atoi(r);
@@ -34,11 +33,18 @@ int* importColors() {
     //Skip this line becuase the numbers are always the same for this project
     fgets(line, 1000, file); 
 
-    //put each coplor number into the colors list
-    int *colors = (int *) malloc((row * col * 3) + 2);
+    //put each color number into the colors list
+    int *colors = (int *) calloc((row * col * 3) + 2, sizeof(int));
+    colors[0] = row;
+    colors[1] = col;
+    int count = 2;
     while (fgets(line, 1000, file) != NULL) {
-        //How do I loop until I hit the end of the line?
-        printf("%s", line);
+        char *num = strtok(line, " ");
+        while (num != NULL) {
+            colors[count] = atoi(num);
+            num = strtok(NULL, " ");
+            count++; 
+        }
     }
     fclose(file);
     return colors; 
@@ -86,23 +92,27 @@ int* extreme_contrast(int colors[]) {
 
 void exitProgram(int colors[]) {
     char filename[FILENAME_MAX]; 
-    printf("Enter name of output file: ");
+    printf("\nEnter name of output file: ");
     scanf("%s",  filename);
     FILE *file = fopen(filename, "w");
-    
-    //Write to file
-
+    fprintf(file, "P3\n%d %d\n255", colors[0], colors[1]);
+    for(int i = 2; i < (colors[0] * colors[1] * 3) + 2; i++) {
+        if((i - 2) % (colors[0] * 3) == 0) {
+            fprintf(file, "\n%d ", colors[i]);
+        } else {
+            fprintf(file, "%d ", colors[i]);
+        }
+    }
     fclose(file);
-    printf("File created\nHave a good day!\n");
+    printf("\nFile created\nHave a good day!\n");
 }
 
 void progam() {
     int* picture = importColors();
-
     int run = 1;
     do {
         int choice;
-        printf("\nHere are your choices:\n[0] exit\n[1] convert to greyscale\n[2] flip horizontally\n[3] negative of red\n[4] negative of green\n[5] negative of blue\n[6] just the reds\n[7] just the greens\n[8] just the blues\n[9] extreme contrast\n[10] add random noise\n\nEnter choice: ");
+        printf("\n\nHere are your choices:\n[0] exit\n[1] convert to greyscale\n[2] flip horizontally\n[3] negative of red\n[4] negative of green\n[5] negative of blue\n[6] just the reds\n[7] just the greens\n[8] just the blues\n[9] extreme contrast\n[10] add random noise\n\nEnter choice: ");
         scanf("%i", &choice);
         switch(choice) {
             case 0:
@@ -140,9 +150,8 @@ void progam() {
                 picture = random_noise(picture);
                 break;
             default:
-                printf("Invalid input");
+                printf("Invalid input\n");
         } 
-        printf("\nThe deed is done!\n");
     } while(run == 1);
 }
 
