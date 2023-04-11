@@ -74,8 +74,9 @@ int* flip_horizontal(int colors[]) {
     for(int r = 0; r < colors[1]; r++) { //For each row
         for(int c = 0; c < colors[0] / 2; c++) { //Split the row in 2 
             //get each pixel and the oppsite pixel starting locations
-            int pixel1Start = 0;
-            int pixel2Start = 0;
+            int pixel1Start = ((colors[0]) * r * 3) + 2 + (c * 3);
+            int pixel2Start = ((colors[0]) * (r + 1) * 3) - 1 - (c * 3);
+            printf("%d %d\n", pixel1Start, pixel2Start);
             for(int i = 0; i < 3; i++) { //for each pixel flip all the values to the oppsite pixel
                 int hold = colors[pixel1Start + i];
                 colors[pixel1Start + i] = colors[pixel2Start + i];
