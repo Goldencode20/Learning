@@ -8,5 +8,4 @@ Projects I want to do
 Completed Projects
     infinite monkey theorem (python)
 
-Languages I want to learn
-    SQL
+Find a open souce project I could join over he summer
