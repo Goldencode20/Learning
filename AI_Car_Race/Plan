@@ -1,0 +1,19 @@
+Needed
+    Car Class
+    Track/Tracks
+    ML modles for cars
+
+Car Class
+    Inputs
+        Speed
+        Distance From Objects
+        Percentage Completed of Lap
+        Place
+    Outputs
+        Gas
+        Break
+        Left
+        Right
+
+End Goal
+    Race multiple Cars on tracks they havent trained on
