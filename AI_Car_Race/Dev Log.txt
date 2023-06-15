@@ -5,4 +5,8 @@ Day 2:
 I honestly did not do that much just confermind I was using tinker and found out I needed a way to work with images.
 I got a keystorke checker to work on the screen and it will tell the user what they typed
 
+Day 3:
+I got it to move a simple box across the screen when you are pushing buttons
 
+Day 4:
+Release Bug where ir keeps doing recursion

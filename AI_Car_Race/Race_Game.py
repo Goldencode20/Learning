@@ -15,8 +15,9 @@ class Car:
     def __init__(self, master = None):
         self.master = master
         
-        self.x = 1
+        self.x = 0
         self.y = 0
+        self.MAX_SPEED = 20
  
         # canvas object to create shape
         self.canvas = Canvas(master)
@@ -34,43 +35,51 @@ class Car:
         self.canvas.move(self.body, self.x, self.y)
  
         self.canvas.after(100, self.movement)
-     
+
     # for motion in negative x direction
     def leftPress(self, event):
-        self.x = -5
-        self.y = 0
-     
+        if (self.x > -self.MAX_SPEED):
+            self.x -= 5
+
     # for motion in positive x direction
     def rightPress(self, event):
-        self.x = 5
-        self.y = 0
-     
+        if (self.x < self.MAX_SPEED):
+            self.x += 5
     # for motion in positive y direction
     def upPress(self, event):
-        self.x = 0
-        self.y = -5
+        if (self.y > -self.MAX_SPEED):
+            self.y -= 5
      
     # for motion in negative y direction
     def downPress(self, event):
-        self.x = 0
-        self.y = 5
-
+        if (self.y < self.MAX_SPEED):
+            self.y += 5
+    """
     def leftRelease(self, event):
-        self.x = 0
-        self.y = 0
+        self.x += 5 
 
     def rightRelease(self, event):
-        self.x = 0
-        self.y = 0
+        self.x -= 5
+    """
+    def UpRelease(self, event):
+        if(self.y < 0):
+            self.y += 1
+            self.UpRelease(event)
 
-    def upRelease(self, event):
-        self.x = 0
-        self.y = 0
+    def DownRelease(self, event):
+        if(self.y > 0):
+            self.y -= 1
+            self.DownRelease(event)
+    
+    def LeftRelease(self, event):
+        if(self.x < 0):
+            self.x -= 1
+            self.LeftRelease(event)
 
-    def downRelease(self, event):
-        self.x = 0
-        self.y = 0
-
+    def RightRelease(self, event):
+        if(self.x > 0):
+            self.x -= 1
+            self.RightRelease(event)
 
 
 master = Tk()
@@ -82,10 +91,10 @@ master.bind("<KeyPress-Left>", lambda e: car.leftPress(e))
 master.bind("<KeyPress-Right>", lambda e: car.rightPress(e))
 master.bind("<KeyPress-Up>", lambda e: car.upPress(e))
 master.bind("<KeyPress-Down>", lambda e: car.downPress(e))
-master.bind("<KeyRelease-Left>", lambda e: car.leftRelease(e))
-master.bind("<KeyRelease-Right>", lambda e: car.rightRelease(e))
-master.bind("<KeyRelease-Up>", lambda e: car.upRelease(e))
-master.bind("<KeyRelease-Down>", lambda e: car.downRelease(e))
+master.bind("<KeyRelease-Left>", lambda e: car.LeftRelease(e))
+master.bind("<KeyRelease-Right>", lambda e: car.RightRelease(e))
+master.bind("<KeyRelease-Up>", lambda e: car.UpRelease(e))
+master.bind("<KeyRelease-Down>", lambda e: car.DownRelease(e))
      
 # Infinite loop breaks only by interrupt
 mainloop()
