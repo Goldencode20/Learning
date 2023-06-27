@@ -43,7 +43,6 @@ for x in range(len(excel_in.Title)):
 
     #Make the URL
     URL = "https://iucat.iu.edu/?utf8=%E2%9C%93&q=" + title + "+" + author + "&search_field=all_field"
-    print(URL)
 
     #Try this and if something happens mark it as an error
     try:

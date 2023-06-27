@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 
 start = tk.Tk()
 lbl_name = tk.Label(text="IUCAT search")
@@ -11,6 +12,12 @@ btn_next = tk.Button(
     bg = "white",
     fg = "black"
 )
+
+
+root = tk.Tk()
+root.withdraw()
+
+file_path = filedialog.askopenfilename()
 
 #btn_next.pack()
 
