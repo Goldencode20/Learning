@@ -18,7 +18,7 @@ def handle_click(event):
     USER_SAVE = filedialog.askdirectory()
     print(USER_SAVE)
     app.destroy()
-
+    
     loading = tk.Tk()
     label = tk.Label(text="This is New Label text", font=('Helvetica 14 bold'))
     label.pack(pady= 30)

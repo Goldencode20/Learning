@@ -28,7 +28,8 @@ have = []
 errors = []
 
 #Run for each line in the excel sheet
-for x in range(len(excel_in.Title)):
+for x in range(5):
+#for x in range(len(excel_in.Title)):
 
     #Get author and normalize if one is listed otherwise leave author blank
     author = excel_in.loc[x].at["Author"]
@@ -82,6 +83,12 @@ for x in range(len(excel_in.Title)):
                 search_title = re.sub(r"[^a-zA-Z ]", "", search_title)
                 search_title = search_title.lower()
 
+                #Get author if one is listed otherwise mark "No Author"
+                if(search_author == None):
+                    search_author = "No Author"
+                else:
+                    search_author = search_author.text
+
                 #Normalize the author 
                 search_author = search_author.replace(" ", "+")
                 search_author = re.sub(r"[^a-zA-Z ]", "", search_author)
@@ -91,7 +98,6 @@ for x in range(len(excel_in.Title)):
                 title_score = SequenceMatcher(None, title, search_title).ratio()
                 author_score = SequenceMatcher(None, author, search_author).ratio()
                 total_score = (title_score + author_score) / 2
-
                 #If the new total score is higher than the old highest score than replace the score
                 if(total_score > highest_score):
                     highest_score = total_score
@@ -99,6 +105,8 @@ for x in range(len(excel_in.Title)):
             #Take the highest score and if it above a certian percent score we set then say fuzzy otherwise add to have list
             if(highest_score < 0.90):
                 do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Fuzzy", URL])
+            elif(highest_score < 0.50):
+                do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Not in system", URL])
             else:
                 have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], URL])
     
@@ -120,6 +128,3 @@ have_df = pd.DataFrame(have_np, columns = ['Title', 'Author', 'URL'])
 with pd.ExcelWriter('Book_Search.xlsx') as writer:
     do_not_have_df.to_excel(writer, sheet_name = "Possible Libraries Do Not Have")
     have_df.to_excel(writer, sheet_name = "Libraries Have")
-
-
-#TODO UI
