@@ -20,13 +20,14 @@ from bs4 import BeautifulSoup
 from tkinter import filedialog
 from difflib import SequenceMatcher
 
-def program(file, save, label):
+def program(file, path, label):
     
     #This is where we get the excel file in question and we pull it into the file
     excel_in = pd.read_excel(file) 
 
     #Set up lists for the output files
     do_not_have = []
+    fuzzy = []
     have = []
     errors = []
 
@@ -35,7 +36,10 @@ def program(file, save, label):
     for x in range(searchLines):
     #for x in range(5):
         #Update the label
-        label.configure(text = str(x) + "/" + str(searchLines))
+        if (x % 10 == 0):
+            label.configure(text = str(x) + "/" + str(searchLines))
+            label.update()
+
         #Get author and normalize if one is listed otherwise leave author blank
         author = excel_in.loc[x].at["Author"]
         if(type(author) != float):
@@ -110,9 +114,9 @@ def program(file, save, label):
 
                 #Take the highest score and if it above a certian percent score we set then say fuzzy otherwise add to have list
                 if(highest_score <= 0.50):
-                    do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Fuzzy", URL])
-                elif(highest_score < 0.90 and highest_score > 0.50):
                     do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Not in system", URL])
+                elif(highest_score < 0.90 and highest_score > 0.50):
+                    fuzzy.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Fuzzy", URL])
                 else:
                     have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], URL])
         
@@ -121,7 +125,7 @@ def program(file, save, label):
             errors.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Error", URL])
 
     #Combine the do not have list and errors list for easier reading
-    do_not_have = do_not_have + errors
+    do_not_have = fuzzy + errors + do_not_have
 
     #Add the lists to the output file 
     do_not_have_np = np.array(do_not_have)
@@ -130,9 +134,9 @@ def program(file, save, label):
     have_df = pd.DataFrame(have_np, columns = ['Title', 'Author', 'URL'])
 
     #Write to the output file
-    #TODO Let user pick output file location
-    #TODO Let user pick output file name
-    with pd.ExcelWriter('Results.xlsx') as writer:
+    #with pd.ExcelWriter('Results.xlsx') as writer:
+    path = path + "/Results.xlsx"
+    with pd.ExcelWriter(path) as writer:
         do_not_have_df.to_excel(writer, sheet_name = "Possible Libraries Do Not Have")
         have_df.to_excel(writer, sheet_name = "Libraries Have")
     
@@ -158,11 +162,16 @@ def handle_click(event):
     btn_next.destroy()
     lbl_name.configure(text = "Setting Up")
     program(USER_FILE, USER_SAVE, lbl_name)
+    print("Done")
     lbl_name.configure(text = "Done")
 
 
-lbl_name = tk.Label(master = app, text = "IUCAT search \n Hello World")
+lbl_name = tk.Label(master = app, text = "IUCAT book search \n\n How to use: \n 1. Create a new excel file \n 2. Put all Titles into the first column \n 3. Put all Authors into the second column \n 4. Save file \n 5. Hit Run \n 6. Select the newly created excel sheet \n 7. Select the location you want the output to be saved \n 8. Wait this process could take awhile depending on how many books you are checking")
 lbl_name.pack()
 btn_next.pack()
 btn_next.bind("<Button-1>", handle_click)
 app.mainloop()
+
+
+#TODO Figure out the error
+#TODO WHen no author is provided only check for title or label fuzzy 
