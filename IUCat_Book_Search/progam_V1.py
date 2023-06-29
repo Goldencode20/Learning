@@ -28,6 +28,7 @@ def program(file, path, label):
     #Set up lists for the output files
     do_not_have = []
     fuzzy = []
+    no_Author = []
     have = []
     errors = []
 
@@ -94,7 +95,7 @@ def program(file, path, label):
 
                     #Get author if one is listed otherwise mark "No Author"
                     if(search_author == None):
-                        search_author = "No Author"
+                        search_author = ""
                     else:
                         search_author = search_author.text
 
@@ -113,7 +114,9 @@ def program(file, path, label):
                         highest_score = total_score
 
                 #Take the highest score and if it above a certian percent score we set then say fuzzy otherwise add to have list
-                if(highest_score <= 0.50):
+                if(author == ""):
+                    no_Author.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "No Author", URL])
+                elif(highest_score <= 0.50):
                     do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Not in system", URL])
                 elif(highest_score < 0.90 and highest_score > 0.50):
                     fuzzy.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Fuzzy", URL])
@@ -125,7 +128,7 @@ def program(file, path, label):
             errors.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Error", URL])
 
     #Combine the do not have list and errors list for easier reading
-    do_not_have = fuzzy + errors + do_not_have
+    do_not_have = fuzzy + errors + no_Author + do_not_have
 
     #Add the lists to the output file 
     do_not_have_np = np.array(do_not_have)
@@ -174,4 +177,3 @@ app.mainloop()
 
 
 #TODO Figure out the error
-#TODO WHen no author is provided only check for title or label fuzzy 
