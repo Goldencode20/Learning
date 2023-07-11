@@ -68,15 +68,15 @@ btn_next = tk.Button(
     fg = "black"
 )
 
-class_code = Text(app, height = 10,
+class_code = Text(app, height = 3,
                 width = 25,
                 bg = "light yellow")
 
-school_code = Text(app, height = 10,
+school_code = Text(app, height = 3,
                 width = 25,
                 bg = "light yellow")
 
-semester = Text(app, height = 10,
+semester = Text(app, height = 3,
                 width = 25,
                 bg = "light yellow")
 
