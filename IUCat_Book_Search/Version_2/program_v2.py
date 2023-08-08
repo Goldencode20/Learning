@@ -116,7 +116,7 @@ def program(file, path, file_name, label):
 
                 #Take the highest score and if it above a certian percent score we set then say fuzzy otherwise add to have list
                 if(author == ""):
-                    no_Author.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "No Author", URL])
+                    no_Author.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "No Author/Fuzzy", URL])
                 elif(highest_score <= 0.50):
                     do_not_have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Not in system", URL])
                 elif(highest_score < 0.90 and highest_score > 0.50):
@@ -125,7 +125,8 @@ def program(file, path, file_name, label):
                     have.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], URL])
         
         #If the try failed add book to errors list
-        except:
+        except Exception as error:
+            print(error)
             errors.append([excel_in.loc[x].at["Title"], excel_in.loc[x].at["Author"], "Error", URL])
 
     #Combine the do not have list and errors list for easier reading
@@ -139,7 +140,7 @@ def program(file, path, file_name, label):
 
     #Write to the output file
     #with pd.ExcelWriter('Results.xlsx') as writer:
-    path = path + "/" + file_name
+    path = path + "/" + file_name + ".xlsx"
     with pd.ExcelWriter(path) as writer:
         do_not_have_df.to_excel(writer, sheet_name = "Possible Libraries Do Not Have")
         have_df.to_excel(writer, sheet_name = "Libraries Have")
@@ -148,6 +149,7 @@ def program(file, path, file_name, label):
 #Below is for the UI
 
 app = tk.Tk()
+app.title("IU Book Search")
 
 btn_next = tk.Button(
     master = app,
@@ -170,13 +172,14 @@ def handle_click(event):
     print(USER_SAVE)
     btn_next.destroy()
     file_name_input.destroy()
+    print(file_name)
     lbl_name.configure(text = "Setting Up")
     program(USER_FILE, USER_SAVE, file_name, lbl_name)
     print("Done")
     lbl_name.configure(text = "Done")
 
 
-lbl_name = tk.Label(master = app, text = "IUCAT book search \n\n How to use: \n 1. Create a new excel file \n 2. Put all Titles into the first column \n 3. Put all Authors into the second column \n 4. Save file \n 5. Type the name of result file below \n 6. Hit Run \n 7. Select the newly created excel sheet \n 8. Select the location you want the output to be saved \n 9. Wait this process could take awhile depending on how many books you are checking")
+lbl_name = tk.Label(master = app, text = "\n How to use: \n 1. Create a new excel file \n 2. Put all Titles into the first column \n 3. Put all Authors into the second column \n 4. Save file \n 5. Type the name of result file below \n 6. Hit Run \n 7. Select the newly created excel sheet \n 8. Select the location you want the output to be saved \n 9. Wait this process could take awhile depending on how many books you are checking\n\nOutput File Name")
 lbl_name.pack()
 file_name_input.pack()
 btn_next.pack()
@@ -184,4 +187,13 @@ btn_next.bind("<Button-1>", handle_click)
 app.mainloop()
 
 
-#TODO Figure out the error
+#TODO Pretty up UI
+
+"""
+For V3
+    Let user pick confident rating for correct, fuzzy, or not in system
+
+If we get acess to special API
+    Let user pick how to search via Author, Editor, Title, Etc.
+    
+"""
