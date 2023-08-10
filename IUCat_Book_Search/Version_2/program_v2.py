@@ -149,20 +149,23 @@ def program(file, path, file_name, label):
 #Below is for the UI
 
 app = tk.Tk()
+app.configure(bg = "#EDEBEB")
 app.title("IU Book Search")
 
 btn_next = tk.Button(
     master = app,
     text = "Run",
-    width = 25,
-    height = 5,
-    bg = "white",
-    fg = "black"
+    font = ("Arial", 15),
+    width = 15,
+    height = 3,
+    bg = "#990000",
+    fg = "#EDEBEB"
 )
 
 file_name_input = Text(app, height = 3,
                 width = 25,
-                bg = "light yellow")
+                font = ("Arial", 12),
+                bg = "#FDEEE8")
 
 def handle_click(event):
     file_name = file_name_input.get("1.0", "end-1c")
@@ -172,6 +175,7 @@ def handle_click(event):
     print(USER_SAVE)
     btn_next.destroy()
     file_name_input.destroy()
+    lbl_output.destroy()
     print(file_name)
     lbl_name.configure(text = "Setting Up")
     program(USER_FILE, USER_SAVE, file_name, lbl_name)
@@ -179,15 +183,15 @@ def handle_click(event):
     lbl_name.configure(text = "Done")
 
 
-lbl_name = tk.Label(master = app, text = "\n How to use: \n 1. Create a new excel file \n 2. Put all Titles into the first column \n 3. Put all Authors into the second column \n 4. Save file \n 5. Type the name of result file below \n 6. Hit Run \n 7. Select the newly created excel sheet \n 8. Select the location you want the output to be saved \n 9. Wait this process could take awhile depending on how many books you are checking\n\nOutput File Name")
-lbl_name.pack()
+lbl_name = tk.Label(master = app, justify = "left", bg = "#EDEBEB", text = "\n How to use: \n 1. Create a new excel file \n 2. Put all Titles into the first column \n 3. Put all Authors into the second column \n 4. Save file \n 5. Type the name of result file below \n 6. Hit Run \n 7. Select the newly created excel sheet \n 8. Select the location you want the output file to be saved \n 9. Wait this process could take awhile depending\n on how many books you are checking\n", font = ("Arial", 15))
+lbl_name.pack(anchor = "w")
+lbl_output = tk.Label(master = app, bg = "#EDEBEB", text = "Output file name", font = ("Arial", 15))
+lbl_output.pack()
 file_name_input.pack()
 btn_next.pack()
 btn_next.bind("<Button-1>", handle_click)
 app.mainloop()
 
-
-#TODO Pretty up UI
 
 """
 For V3

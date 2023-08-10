@@ -48,7 +48,7 @@ def program(input_file, output_path, class_code, school_code, semester):
                 temp.insert(7, ' ')
                 temp.insert(8, ' ')
                 temp.insert(9, ' ')
-                temp.insert(10, ' ')
+                temp.insert(11, ' ')
 
     arr = numpy.array(endList)
     df = pd.DataFrame(arr, columns = ['Course/Guide Name:', '', 'Instructor(s) or Contact:', '' , 'Instructor E-mail:', '', 'Guide URL:', '', 'Embedded In Canvas:', '', 'Metadata:', '', 'When:', 'Where:'])
