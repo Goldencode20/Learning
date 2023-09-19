@@ -5,6 +5,7 @@ Projects I want to do
     To do app to track what I have
     Discord bot?
     Blockchain for a game 
+    AI that colors space images using RGB film
     
 Completed Projects
     infinite monkey theorem (python)
