@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Survey From</title>
+        <link href="styles.css" rel="stylesheet"/> 
+    </head>
+    <body>
+        <h1 id="title">Survey Form</h1>
+        <p id="description">Thank you for taking our survey so we can do better!</p>
+        <form id="survey-form" method="post">
+            <fieldset>
+                <label for="name" id="name-label">Enter Your Name: <input id="name" name="name" type="text" required placeholder="Jhon Doe" /></label>
+                <label for="email" id="email-label">Enter Your Email: <input id="email" name="email" type="email" required placeholder="example@email.com" /></label>
+                <label for="number" id="number-label">How many stars would you give us? (1-5): <input id="number" type="number" name="number" min="1" max="5" required placeholder="5" /></label>
+                
+                <label for="referrer">How did you work with us?
+                    <select id="dropdown">
+                        <option value="">(select one)</option>
+                        <option value="1">In Person</option>
+                        <option value="1">Online</option>
+                    </select> 
+                </label>
+            </fieldset>
+            <fieldset>
+                <label>Would you reccomend us to a friend?</label>
+                <label for="yes"><input id="yes" type="radio" name="reccomend" class="inline" value="yes" checked /> Yes</label>
+                <label for="maybe"><input id="maybe" type="radio" name="reccomend" class="inline" value="maybe" checked /> Maybe</label>
+                <label for="no"><input id="no" type="radio" name="reccomend" class="inline" value="no" checked /> No</label>
+            </fieldset>
+            <fieldset>
+                <legend>If you have visited in person which locations have you been to?</legend>
+                <label for="new-york"><input checked value="new-york" class="inline" id="new-york" type="checkbox" name="locations" />New York</label>
+                <label for="chicago"><input value="chicago" class="inline" id="chicago" type="checkbox" name="locations" />Chicago</label>
+                <label for="dayton"><input value="dayton" class="inline" id="dayton" type="checkbox" name="locations" />Dayton</label>
+            </fieldset>
+            <fieldset>
+                <label for="thoughts">Please write about your experience:
+                    <textarea id="thoughts" name="thoughts" rows="3" cols="30"></textarea>
+                </label>
+            </fieldset>
+            <input id="submit" type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
