@@ -105,11 +105,7 @@ void StudentRecords::report_card(int sid) const {
     }
     for (Grade grade : grades) {
         if(grade.get_student_id() == sid) {
-            for(Course course : courses) {
-                if(course.get_id() == grade.get_course_id()) {
-                    std::cout << course.get_name() + ": " + grade.get_grade() << std::endl;
-                }
-            }
+                std::cout << courses[grade.get_course_id()].get_name() + ": " + grade.get_grade() << std::endl;
         }
     }
     std::cout << get_GPA(sid) << std::endl;
