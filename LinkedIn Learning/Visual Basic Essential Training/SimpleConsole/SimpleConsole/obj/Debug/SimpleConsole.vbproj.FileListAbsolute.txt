@@ -1,0 +1,11 @@
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\bin\Debug\SimpleConsole.exe.config
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\bin\Debug\SimpleConsole.exe
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\bin\Debug\SimpleConsole.pdb
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\bin\Debug\SimpleConsole.xml
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.vbproj.AssemblyReference.cache
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.Resources.resources
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.vbproj.GenerateResource.cache
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.vbproj.CoreCompileInputs.cache
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.exe
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.xml
+C:\Users\avata\OneDrive\Documents\GitHub\Projects-Learning\LinkedIn Learning\Visual Basic Essential Training\SimpleConsole\SimpleConsole\obj\Debug\SimpleConsole.pdb

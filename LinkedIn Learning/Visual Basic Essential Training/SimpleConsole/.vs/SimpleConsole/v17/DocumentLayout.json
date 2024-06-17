@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\avata\\OneDrive\\Documents\\GitHub\\Projects-Learning\\LinkedIn Learning\\Visual Basic Essential Training\\SimpleConsole\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB55232-712C-435F-BECA-6A29BE12753A}|SimpleConsole\\SimpleConsole.vbproj|c:\\users\\avata\\onedrive\\documents\\github\\projects-learning\\linkedin learning\\visual basic essential training\\simpleconsole\\simpleconsole\\module1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9CB55232-712C-435F-BECA-6A29BE12753A}|SimpleConsole\\SimpleConsole.vbproj|solutionrelative:simpleconsole\\module1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Module1.vb",
+              "DocumentMoniker": "C:\\Users\\avata\\OneDrive\\Documents\\GitHub\\Projects-Learning\\LinkedIn Learning\\Visual Basic Essential Training\\SimpleConsole\\SimpleConsole\\Module1.vb",
+              "RelativeDocumentMoniker": "SimpleConsole\\Module1.vb",
+              "ToolTip": "C:\\Users\\avata\\OneDrive\\Documents\\GitHub\\Projects-Learning\\LinkedIn Learning\\Visual Basic Essential Training\\SimpleConsole\\SimpleConsole\\Module1.vb",
+              "RelativeToolTip": "SimpleConsole\\Module1.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-17T19:43:19.372Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
