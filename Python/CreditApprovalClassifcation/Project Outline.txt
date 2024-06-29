@@ -1,0 +1,14 @@
+I will be using the Credit Approval. Some data points are missing data so I 
+will need to find out what to do with those data points.I want to be run 
+this with diffrent types of ML training and classifiation to see which 
+does the best. 
+
+Data Manpulation:
+    I added a line at the top of the file so it would have type headers for each
+    For this I used the A1-A16 like the source labels them.
+
+How to deal with Missing Data: 
+    There is
+
+Data Source
+https://archive.ics.uci.edu/dataset/27/credit+approval
